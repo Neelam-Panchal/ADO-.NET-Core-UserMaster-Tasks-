@@ -1,0 +1,14 @@
+D:\Neelam\ASP .NET\UserMaster.Application\bin\Debug\netcoreapp3.1\UserMaster.Application.deps.json
+D:\Neelam\ASP .NET\UserMaster.Application\bin\Debug\netcoreapp3.1\UserMaster.Application.dll
+D:\Neelam\ASP .NET\UserMaster.Application\bin\Debug\netcoreapp3.1\UserMaster.Application.pdb
+D:\Neelam\ASP .NET\UserMaster.Application\bin\Debug\netcoreapp3.1\UserMaster.Core.dll
+D:\Neelam\ASP .NET\UserMaster.Application\bin\Debug\netcoreapp3.1\UserMaster.Infrastructure.dll
+D:\Neelam\ASP .NET\UserMaster.Application\bin\Debug\netcoreapp3.1\UserMaster.Core.pdb
+D:\Neelam\ASP .NET\UserMaster.Application\bin\Debug\netcoreapp3.1\UserMaster.Infrastructure.pdb
+D:\Neelam\ASP .NET\UserMaster.Application\obj\Debug\netcoreapp3.1\UserMaster.Application.csproj.AssemblyReference.cache
+D:\Neelam\ASP .NET\UserMaster.Application\obj\Debug\netcoreapp3.1\UserMaster.Application.AssemblyInfoInputs.cache
+D:\Neelam\ASP .NET\UserMaster.Application\obj\Debug\netcoreapp3.1\UserMaster.Application.AssemblyInfo.cs
+D:\Neelam\ASP .NET\UserMaster.Application\obj\Debug\netcoreapp3.1\UserMaster.Application.csproj.CoreCompileInputs.cache
+D:\Neelam\ASP .NET\UserMaster.Application\obj\Debug\netcoreapp3.1\UserMaster.Application.csproj.CopyComplete
+D:\Neelam\ASP .NET\UserMaster.Application\obj\Debug\netcoreapp3.1\UserMaster.Application.dll
+D:\Neelam\ASP .NET\UserMaster.Application\obj\Debug\netcoreapp3.1\UserMaster.Application.pdb

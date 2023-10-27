@@ -1,0 +1,51 @@
+﻿@model UserMaster.Core.ViewModels.TaskViewModel
+
+@{
+    ViewData["Title"] = "Add Task";
+}
+
+
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <h3>Add Task</h3>
+        <form asp-action="Task">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TaskTitle" class="control-label"></label>
+                <input asp-for="TaskTitle" class="form-control" />
+                <span asp-validation-for="TaskTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TaskDescription" class="control-label"></label>
+                <input asp-for="TaskDescription" class="form-control" />
+                <span asp-validation-for="TaskDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="Priority">Priority:</label>
+                <select id="Priority" name="Priority" class="form-control">
+                    <option value="Critical">Critical</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="EstimatedHours" class="control-label"></label>
+                <input asp-for="EstimatedHours" class="form-control" />
+                <span asp-validation-for="EstimatedHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ADD" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

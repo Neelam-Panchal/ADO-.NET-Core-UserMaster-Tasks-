@@ -1,0 +1,200 @@
+﻿
+@using UserMaster.Core.ViewModels
+@model TaskViewModel
+
+
+@{ ViewData["Title"] = "GetTask";
+}
+
+<h1>Task Details</h1>
+
+<div class="text-center">
+    <h3>Welcome</h3>
+    @*  @if (TempData["RegistrationSuccess"] != null)
+        {
+            <p>@TempData["RegistrationSuccess"]</p>
+        }
+        @if (TempData["LoginSuccess"] != null)
+        {
+            <p>@TempData["LoginSuccess"]</p>
+            <p>Welcome, @ViewBag.UserName</p>
+        }*@
+    @*<a asp-controller="Home" asp-action="Logout" class="btn btn-primary">Logout</a>*@
+</div>
+
+
+    <p>
+        <a asp-action="Task" class="btn btn-primary">Create New</a>
+    </p>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form asp-action="AssignToTask" asp-controller="Task" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <!-- Place your form fields, including the dropdown list, here -->
+                        <div class="form-group">
+                            <label for="AssignToUserId" asp-for="AssignToUserId">Assign To:</label>
+                            <select id="AssignToUserId" name="AssignToUserId" class="form-control" asp-for="AssignToUserId">
+
+                                @*<select id="assignToUser" class="form-control">*@
+
+                                @if (ViewBag.Users != null)
+                                {
+                                    @foreach (var user in ViewBag.Users)
+                                    {
+                                        <option value="@user.Value">@user.Text</option>
+                                    }
+                                }
+                            </select>
+                            <select id="Status" asp-for="Status" name="Status" class="form-control">
+                                <option value="New" hidden></option>
+                                <option value="Open" hidden></option>
+                                <option value="In-Progress">In-Progress</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Closed">Closed</option>
+
+                            </select>
+
+                        </div>
+                        <input type="hidden" id="TaskID" name="TaskID" />
+                        <input type="hidden" name="Status" id="Status" />
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- END OF MODAL -->
+
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    Task Title
+                </th>
+                <th>
+                    Task Description
+                </th>
+                <th>
+                    Priority
+                </th>
+                <th>
+                    Estimated Hours
+                </th>
+                <th>
+                    Status
+                </th>
+                <th>
+                    AssignToUser
+                </th>
+                <th colspan="2">
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.Tasks)
+            {
+                <tr>
+                    <td>
+                        @item.TaskTitle
+                        @item.TaskID
+                    </td>
+                    <td>
+                        @item.TaskDescription
+                    </td>
+                    <td>
+                        @item.Priority
+                    </td>
+                    <td>
+                        @item.EstimatedHours
+                    </td>
+                    <td style="color: @(item.Status == "New" ? "blue" : item.Status == "In-Progress" ? "orange" : item.Status == "Completed" ? "green" : item.Status == "In-Progress" ? "orange" : item.Status == "Closed" ? "red" : "grey" ); font-weight:600">
+                        @item.Status
+                    </td>
+
+
+                    <td> @item.AssignToUserId</td>
+
+
+                    <td>
+                        <button class="btn btn-success edit-task" data-toggle="modal" data-target="#exampleModal" onclick="getTaskId(@item.TaskID, '@item.AssignToUserId','@item.Status')">
+                            Edit
+                        </button>
+                    </td>
+                    <td>
+                        <form asp-controller="Task" asp-action="SDeleteTask" method="post" onsubmit="return confirmDelete('@item.Status');">
+                            <input type="hidden" asp-for="TaskID" name="taskId" value="@item.TaskID" />
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+
+                    </td>
+                </tr>
+               
+            }
+        </tbody>
+    </table>
+
+    <script>
+        function confirmDelete(status)
+        {
+            if (status != 'New')
+            {
+                alert("You can't delete this task as you assigned this task to another user.");
+                return false;
+            }
+            else
+            {
+                return confirm("Are you sure you want to delete this task?");
+            }
+
+        }
+        function getTaskId(TaskID, AssignToUserId, Status) {
+
+            $("#TaskID").val(TaskID);
+            $("#AssignToUserId").val(AssignToUserId);
+            $("#Status").val(Status);
+            //var taskStatus = Status; // Corrected variable name
+
+
+            // Find the userlist option in the form
+            var assignToUserSelect = $("#AssignToUserId"); // Corrected element ID
+            var taskStatusSelect = $("#Status"); // Corrected element ID
+            // Disable the userlist option if the task status is "New" and enable it otherwise
+            if (Status == "New") {
+                assignToUserSelect.prop('disabled', false);
+                taskStatusSelect.prop('disabled', true);
+            } else {
+                assignToUserSelect.prop('disabled', true);
+                taskStatusSelect.prop('disabled', false);
+            }
+
+          @*  if (Status == "Assigned") {
+                assignToUserSelect.prop('disabled', true);
+                taskStatusSelect.prop('disabled', true);
+            }*@
+
+            if (Status == "Open" || Status == "In-Progress" || Status == "Completed" || Status == "Closed") {
+                taskStatusSelect.prop('disabled', false);
+                assignToUserSelect.prop('disabled', true);
+            } else {
+                taskStatusSelect.prop('disabled', true);
+                assignToUserSelect.prop('disabled', false);
+            }
+        }
+    </script>

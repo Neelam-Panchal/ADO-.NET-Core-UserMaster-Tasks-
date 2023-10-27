@@ -1,0 +1,9 @@
+D:\Neelam\ASP .NET\UserMaster.Core\bin\Debug\netcoreapp3.1\UserMaster.Core.deps.json
+D:\Neelam\ASP .NET\UserMaster.Core\bin\Debug\netcoreapp3.1\UserMaster.Core.dll
+D:\Neelam\ASP .NET\UserMaster.Core\bin\Debug\netcoreapp3.1\UserMaster.Core.pdb
+D:\Neelam\ASP .NET\UserMaster.Core\obj\Debug\netcoreapp3.1\UserMaster.Core.csproj.AssemblyReference.cache
+D:\Neelam\ASP .NET\UserMaster.Core\obj\Debug\netcoreapp3.1\UserMaster.Core.AssemblyInfoInputs.cache
+D:\Neelam\ASP .NET\UserMaster.Core\obj\Debug\netcoreapp3.1\UserMaster.Core.AssemblyInfo.cs
+D:\Neelam\ASP .NET\UserMaster.Core\obj\Debug\netcoreapp3.1\UserMaster.Core.csproj.CoreCompileInputs.cache
+D:\Neelam\ASP .NET\UserMaster.Core\obj\Debug\netcoreapp3.1\UserMaster.Core.dll
+D:\Neelam\ASP .NET\UserMaster.Core\obj\Debug\netcoreapp3.1\UserMaster.Core.pdb

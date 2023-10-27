@@ -1,0 +1,92 @@
+﻿@model UserMaster.Core.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<style>
+    body {
+        background-color: #EBF5FB;
+    }
+</style>
+    
+
+
+  
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <center><h3>SignUp</h3></center>
+                <form asp-controller="Register" asp-action="Register" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+
+                        <input asp-for="FirstName" class="form-control" placeholder="FirstName" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input asp-for="MiddleName" class="form-control" placeholder="MiddleName" />
+                        <span asp-validation-for="MiddleName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input asp-for="LastName" class="form-control" placeholder="FirstName" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input asp-for="EmailAddress" class="form-control" placeholder="EmailAddress" />
+                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input asp-for="DateOfBirth" class="form-control" placeholder="DateOfBirth" />
+                        <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input asp-for="PhoneNumber" class="form-control" placeholder="PhoneNumber" />
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <select asp-for="Nationality" asp-items="ViewBag.Nationalities" class="form-control">
+                            <option value="">Select Nationality</option>
+                        </select>
+                        <span asp-validation-for="Nationality" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input asp-for="UserName" class="form-control" placeholder="UserName" />
+                        <span asp-validation-for="UserName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input asp-for="Password" class="form-control" placeholder="Password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+
+                        <input asp-for="ConfirmPassword" class="form-control" placeholder="ConfirmPassword" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="SignUp" class="btn btn-primary" />
+                    </div>
+                </form>
+
+                <div>
+                    <a asp-controller="Login" asp-action="Login">Already have an account?</a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
